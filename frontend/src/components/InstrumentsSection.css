@@ -1,0 +1,255 @@
+/* =============================================
+   DANCE STYLES / PROGRAMS SECTION
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap');
+
+.instruments-section {
+  padding: 6rem 2rem;
+  background: #f1f5f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.instruments-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.instruments-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.instruments-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.instruments-subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.instruments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.instrument-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.75rem;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeSlideUp 0.5s ease both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.instrument-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(30, 41, 59, 0.1);
+}
+
+.instrument-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.instrument-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-main {
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-glow {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0.4;
+}
+
+.instrument-stats {
+  text-align: right;
+}
+
+.instrument-stats .stat-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1;
+}
+
+.instrument-stats .stat-label {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.instrument-content {
+  margin-bottom: 1.25rem;
+}
+
+.instrument-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.5rem;
+}
+
+.instrument-description {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.65;
+  margin: 0 0 0.75rem;
+}
+
+.instrument-level {
+  display: inline-block;
+}
+
+.level-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 0.25rem 0.6rem;
+  border-radius: 100px;
+}
+
+.instrument-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.instrument-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4a5568, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.instrument-card:hover .instrument-decoration {
+  opacity: 1;
+}
+
+.decoration-line { display: none; }
+.decoration-dots { display: none; }
+
+/* Showcase */
+.instruments-showcase {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 20px;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-content h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.75rem;
+}
+
+.showcase-content p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+  max-width: 480px;
+}
+
+.showcase-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.feature-icon {
+  font-size: 1rem;
+}
+
+.showcase-visual {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.floating-elements { position: relative; width: 100%; height: 100%; }
+
+.floating-note {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: floatNote 3s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+.floating-note.note-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.floating-note.note-2 { top: 5%; right: 10%; animation-delay: 0.5s; }
+.floating-note.note-3 { bottom: 20%; left: 20%; animation-delay: 1s; }
+.floating-note.note-4 { bottom: 10%; right: 10%; animation-delay: 1.5s; }
+
+@keyframes floatNote {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@media (max-width: 768px) {
+  .instruments-section { padding: 4rem 1.25rem; }
+  .instruments-showcase { flex-direction: column; text-align: center; }
+  .showcase-visual { display: none; }
+}

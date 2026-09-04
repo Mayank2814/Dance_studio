@@ -1,0 +1,209 @@
+/* =============================================
+   FEATURES SECTION — Premium Cards
+   ============================================= */
+
+.features-section {
+  padding: 6rem 2rem;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.features-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(74, 85, 104, 0.15), transparent);
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.features-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.features-subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 5rem;
+}
+
+.feature-card {
+  position: relative;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+  animation: fadeSlideUp 0.5s ease both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(74, 85, 104, 0.12);
+  border-color: #cbd5e1;
+}
+
+.feature-icon-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+}
+
+.feature-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.6rem;
+}
+
+.feature-description {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0;
+}
+
+.feature-hover-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4a5568, #718096);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  border-radius: 0 0 16px 16px;
+}
+
+.feature-card:hover .feature-hover-effect {
+  transform: scaleX(1);
+}
+
+/* CTA Band */
+.features-cta {
+  background: linear-gradient(135deg, #3d4d62 0%, #4a5c72 100%);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.features-cta::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cta-content h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.cta-content p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cta-visual {
+  flex-shrink: 0;
+}
+
+.music-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 48px;
+}
+
+.wave-bar {
+  width: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  animation: wave 1.2s ease-in-out infinite alternate;
+}
+
+.wave-bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+.wave-bar:nth-child(2) { height: 100%; animation-delay: 0.15s; }
+.wave-bar:nth-child(3) { height: 45%; animation-delay: 0.3s; }
+.wave-bar:nth-child(4) { height: 80%; animation-delay: 0.45s; }
+.wave-bar:nth-child(5) { height: 55%; animation-delay: 0.6s; }
+
+@keyframes wave {
+  from { transform: scaleY(1); }
+  to   { transform: scaleY(0.35); }
+}
+
+/* Override btn styles for light bg */
+.features-cta .btn-primary,
+.features-cta .btn-ghost {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .features-section { padding: 4rem 1.25rem; }
+  .features-cta { flex-direction: column; text-align: center; }
+  .cta-buttons { justify-content: center; }
+  .cta-visual { display: none; }
+}

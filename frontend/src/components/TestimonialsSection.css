@@ -1,0 +1,252 @@
+/* =============================================
+   TESTIMONIALS SECTION — Premium Clean
+   ============================================= */
+
+.testimonials-section {
+  padding: 6rem 2rem;
+  background: #ffffff;
+  position: relative;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.testimonials-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.testimonials-subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.testimonial-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeSlideUp 0.5s ease both;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(30, 41, 59, 0.08);
+}
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.student-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a5568, #718096);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatar-emoji {
+  font-size: 1.5rem;
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.2rem;
+}
+
+.student-details {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.rating {
+  display: flex;
+  gap: 1px;
+}
+
+.star {
+  font-size: 0.75rem;
+}
+
+.testimonial-quote {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: #475569;
+  margin: 0 0 1.25rem;
+  font-style: italic;
+  border-left: 3px solid #4a5568;
+  padding-left: 1rem;
+}
+
+.testimonial-achievement {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.achievement-icon { font-size: 0.9rem; }
+
+.achievement-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.testimonial-decoration {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+}
+
+.quote-mark {
+  font-size: 4rem;
+  line-height: 1;
+  color: rgba(74, 85, 104, 0.08);
+  font-family: Georgia, serif;
+  font-weight: 700;
+}
+
+/* Stats */
+.stats-section {
+  margin-bottom: 4rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #3d4d62, #4a5c72);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  animation: fadeSlideUp 0.5s ease both;
+}
+
+.stat-card .stat-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.stat-card .stat-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.stat-visual { display: none; }
+
+/* CTA Card */
+.testimonials-cta {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.cta-card {
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cta-card .cta-content h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.cta-card .cta-content p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+}
+
+.cta-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cta-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.feature-check {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #a3e635;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .testimonials-section { padding: 4rem 1.25rem; }
+  .cta-card { flex-direction: column; text-align: center; }
+  .cta-features { align-items: center; }
+  .cta-actions { flex-direction: row; justify-content: center; flex-wrap: wrap; }
+}
