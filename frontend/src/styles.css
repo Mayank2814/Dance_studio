@@ -2071,3 +2071,360 @@ input:focus, select:focus, textarea:focus {
 }
 
 
+/* =====================================================
+   QUICK ACTION BUTTONS — equal size, same shape
+   ===================================================== */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.quick-action-btn {
+  /* Reset any inherited btn styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+
+  /* Uniform sizing */
+  height: 52px;
+  padding: 0 20px;
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Base glass style */
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.25) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  color: #e5e7eb;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  transition: left 0.5s ease;
+}
+
+.quick-action-btn:hover::before {
+  left: 100%;
+}
+
+.quick-action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+  border-color: rgba(139, 92, 246, 0.6);
+  color: #fff;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(236, 72, 153, 0.35) 100%);
+}
+
+.quick-action-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Primary variant (first button, highlighted) */
+.quick-action-btn.primary {
+  background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #a855f7 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.quick-action-btn.primary:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #db2777 50%, #9333ea 100%);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* =====================================================
+   DASHBOARD — Landing Page Visual Parity
+   ===================================================== */
+
+/* Richer animated background for dash shell */
+.dash-shell {
+  background:
+    radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 55%),
+    linear-gradient(160deg, #0a0a1a 0%, #0f0f23 25%, #1a1a2e 50%, #16213e 75%, #020617 100%);
+}
+
+/* Animated ambient blobs (like landing page radial glows) */
+.dash-shell::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: blobFloat1 18s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dash-shell::after {
+  content: '';
+  position: fixed;
+  bottom: -15%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: blobFloat2 22s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes blobFloat1 {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  33%     { transform: translate(40px, -30px) scale(1.05); }
+  66%     { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes blobFloat2 {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  33%     { transform: translate(-30px, 20px) scale(1.03); }
+  66%     { transform: translate(20px, -15px) scale(0.97); }
+}
+
+/* Elevated Navbar — matches Landing Page header glass */
+.dash-nav-header {
+  background:
+    linear-gradient(135deg, rgba(10, 10, 26, 0.97) 0%, rgba(15, 23, 42, 0.95) 100%),
+    radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow:
+    0 2px 32px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(99, 102, 241, 0.15);
+}
+
+/* Brand uses Outfit to match landing page */
+.brand-logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+/* Upgraded nav items — Outfit font */
+.nav-item {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* Main content area — match landing page dark gradient */
+.dash-main {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.04) 0%, transparent 50%),
+    transparent;
+  position: relative;
+  z-index: 1;
+}
+
+/* Page section title style — like landing page section titles */
+.page-section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #e2e8f0 0%, #c084fc 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 0.25rem;
+}
+
+.page-section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+  margin: 0 0 2rem;
+}
+
+/* Welcome banner — D4E-style dark panel look */
+.welcome-banner {
+  background:
+    linear-gradient(135deg, rgba(99, 102, 241, 0.18) 0%, rgba(168, 85, 247, 0.15) 50%, rgba(236, 72, 153, 0.12) 100%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(99, 102, 241, 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.welcome-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #ec4899, #06b6d4, #a855f7);
+  opacity: 0.9;
+}
+
+.welcome-banner::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  right: -5%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Stat cards match landing page feature-card style */
+.stat-card-lp {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.85) 100%),
+    radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.stat-card-lp::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.stat-card-lp:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 12px 36px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.stat-card-lp:hover::before { opacity: 1; }
+
+.stat-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.stat-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-card-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #9ca3af;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+}
+
+.stat-card-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Section header with divider — landing page style */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  gap: 1rem;
+}
+
+.section-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-header-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+/* Quick Actions section wrapper */
+.quick-actions-section {
+  background:
+    linear-gradient(135deg, rgba(10, 10, 30, 0.7) 0%, rgba(15, 23, 42, 0.6) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  border-radius: 20px;
+  padding: 1.5rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+/* Profile dropdown divider */
+.dropdown-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.15), transparent);
+  margin: 0.25rem 0;
+  border: none;
+}
+
+/* profile-menu-wrapper must be position:relative for dropdown anchor */
+.profile-menu-wrapper {
+  position: relative;
+}
+

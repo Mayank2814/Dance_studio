@@ -36,7 +36,6 @@ const StudentOverview = () => {
 
   const totalPracticeMinutes = logs.reduce((acc, curr) => acc + (curr.durationMinutes || 0), 0);
   const practiceHours = (totalPracticeMinutes / 60).toFixed(1);
-
   const feeSummary = fees[0] || null;
 
   if (loading) {
@@ -45,113 +44,112 @@ const StudentOverview = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-      {/* Top Welcome Banner */}
-      <div className="card" style={{ background: "linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(59, 130, 246, 0.15))", border: "1px solid rgba(147, 51, 234, 0.3)" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
+
+      {/* ── Welcome Banner ── */}
+      <div className="welcome-banner">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "16px", position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "linear-gradient(135deg, #a855f7, #6366f1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "28px", color: "#fff" }}>
+            <div style={{ width: "60px", height: "60px", borderRadius: "50%", background: "linear-gradient(135deg, #6366f1, #a855f7, #ec4899)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "28px", boxShadow: "0 4px 20px rgba(99,102,241,0.4)" }}>
               🎓
             </div>
             <div>
-              <h1 style={{ fontSize: "24px", fontWeight: "bold", margin: 0, color: "#fff" }}>
+              <h1 style={{ fontSize: "22px", fontWeight: "800", margin: 0, color: "#f1f5f9", fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.01em" }}>
                 Welcome back, {profile?.user?.name || "Student"}!
               </h1>
-              <p style={{ margin: "4px 0 0 0", color: "#9ca3af", fontSize: "14px" }}>
-                Instrument: <strong style={{ color: "#c084fc" }}>{profile?.instrument || "Not assigned"}</strong> • Level: <strong style={{ color: "#60a5fa" }}>{profile?.courseLevel || "Beginner"}</strong>
+              <p style={{ margin: "4px 0 0 0", color: "#94a3b8", fontSize: "13px", fontFamily: "'Inter', sans-serif" }}>
+                Dance style: <strong style={{ color: "#c084fc" }}>{profile?.instrument || "Not assigned"}</strong> · Level: <strong style={{ color: "#60a5fa" }}>{profile?.courseLevel || "Beginner"}</strong>
               </p>
             </div>
           </div>
-          <div style={{ padding: "10px 16px", borderRadius: "12px", background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.1)" }}>
-            <div style={{ fontSize: "12px", color: "#9ca3af" }}>Assigned Instructor</div>
-            <div style={{ fontSize: "15px", fontWeight: "600", color: "#34d399" }}>
+          <div style={{ padding: "10px 18px", borderRadius: "12px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(10px)" }}>
+            <div style={{ fontSize: "11px", color: "#94a3b8", letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: "'Outfit', sans-serif" }}>Assigned Instructor</div>
+            <div style={{ fontSize: "15px", fontWeight: "700", color: "#34d399", marginTop: "2px", fontFamily: "'Outfit', sans-serif" }}>
               👨‍🏫 {profile?.assignedTeacher?.user?.name || "Pending Assignment"}
             </div>
           </div>
         </div>
       </div>
 
-      {/* 4 Stat Cards */}
-      <div className="grid-responsive" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px" }}>
-        <div className="card" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "rgba(59, 130, 246, 0.2)", color: "#60a5fa", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px" }}>
-            📅
-          </div>
-          <div>
-            <div style={{ fontSize: "13px", color: "#9ca3af" }}>Upcoming Lessons</div>
-            <div style={{ fontSize: "22px", fontWeight: "bold", color: "#fff" }}>{schedules.length}</div>
+      {/* ── Stat Cards ── */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+        <div className="stat-card-lp">
+          <div className="stat-card-icon" style={{ background: "rgba(59,130,246,0.18)", border: "1px solid rgba(59,130,246,0.25)" }}>📅</div>
+          <div className="stat-card-body">
+            <span className="stat-card-label">Upcoming Lessons</span>
+            <span className="stat-card-value" style={{ color: "#60a5fa" }}>{schedules.length}</span>
           </div>
         </div>
 
-        <div className="card" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "rgba(168, 85, 247, 0.2)", color: "#c084fc", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px" }}>
-            ⏱️
-          </div>
-          <div>
-            <div style={{ fontSize: "13px", color: "#9ca3af" }}>Practice Hours</div>
-            <div style={{ fontSize: "22px", fontWeight: "bold", color: "#fff" }}>{practiceHours} hrs</div>
+        <div className="stat-card-lp">
+          <div className="stat-card-icon" style={{ background: "rgba(168,85,247,0.18)", border: "1px solid rgba(168,85,247,0.25)" }}>⏱️</div>
+          <div className="stat-card-body">
+            <span className="stat-card-label">Practice Hours</span>
+            <span className="stat-card-value" style={{ color: "#c084fc" }}>{practiceHours} <span style={{ fontSize: "0.9rem", fontWeight: 500 }}>hrs</span></span>
           </div>
         </div>
 
-        <div className="card" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "rgba(52, 211, 153, 0.2)", color: "#34d399", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px" }}>
-            💰
-          </div>
-          <div>
-            <div style={{ fontSize: "13px", color: "#9ca3af" }}>Fee Status</div>
-            <div style={{ fontSize: "18px", fontWeight: "bold", color: feeSummary?.status === "Paid" ? "#34d399" : "#f59e0b" }}>
+        <div className="stat-card-lp">
+          <div className="stat-card-icon" style={{ background: "rgba(52,211,153,0.15)", border: "1px solid rgba(52,211,153,0.25)" }}>💰</div>
+          <div className="stat-card-body">
+            <span className="stat-card-label">Fee Status</span>
+            <span className="stat-card-value" style={{ fontSize: "1.3rem", color: feeSummary?.status === "Paid" ? "#34d399" : "#f59e0b" }}>
               {feeSummary?.status || "Pending"}
-            </div>
+            </span>
           </div>
         </div>
 
-        <div className="card" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "rgba(244, 63, 94, 0.2)", color: "#fb7185", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px" }}>
-            🎭
-          </div>
-          <div>
-            <div style={{ fontSize: "13px", color: "#9ca3af" }}>Recitals</div>
-            <div style={{ fontSize: "22px", fontWeight: "bold", color: "#fff" }}>{recitals.length}</div>
+        <div className="stat-card-lp">
+          <div className="stat-card-icon" style={{ background: "rgba(244,63,94,0.15)", border: "1px solid rgba(244,63,94,0.25)" }}>🎭</div>
+          <div className="stat-card-body">
+            <span className="stat-card-label">Recitals</span>
+            <span className="stat-card-value" style={{ color: "#fb7185" }}>{recitals.length}</span>
           </div>
         </div>
       </div>
 
-      {/* Quick Action Navigation Buttons */}
-      <div className="card">
-        <h3 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px", color: "#fff" }}>⚡ Quick Actions</h3>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px" }}>
-          <Link to="/student/enroll" className="btn btn-primary" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", textDecoration: "none", padding: "12px" }}>
+      {/* ── Quick Actions ── */}
+      <div className="quick-actions-section">
+        <div className="section-header" style={{ marginBottom: "1rem" }}>
+          <div className="section-header-left">
+            <div className="section-header-icon">⚡</div>
+            <h3 className="section-title">Quick Actions</h3>
+          </div>
+        </div>
+        <div className="quick-actions-grid">
+          <Link to="/student/enroll" className="quick-action-btn primary">
             <span>➕</span> Enroll in Classes
           </Link>
-          <Link to="/student/practice-logs" className="btn btn-secondary" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", textDecoration: "none", padding: "12px" }}>
+          <Link to="/student/practice-logs" className="quick-action-btn">
             <span>🎼</span> Submit Practice Log
           </Link>
-          <Link to="/student/fees" className="btn btn-secondary" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", textDecoration: "none", padding: "12px" }}>
+          <Link to="/student/fees" className="quick-action-btn">
             <span>💰</span> View Fee Details
           </Link>
-          <Link to="/student/recitals" className="btn btn-secondary" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", textDecoration: "none", padding: "12px" }}>
+          <Link to="/student/recitals" className="quick-action-btn">
             <span>🎭</span> View Recitals
           </Link>
         </div>
       </div>
 
-      {/* Main Grid: Upcoming Lessons & Recent Practice Logs */}
+      {/* ── Main Grid ── */}
       <div className="grid-responsive">
-        {/* Next Lessons Card */}
+        {/* Next Lessons */}
         <div className="card">
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
-            <h2 style={{ fontSize: "18px", fontWeight: "bold", margin: 0, color: "#fff", display: "flex", alignItems: "center", gap: "8px" }}>
-              <span>📅</span> Next Upcoming Lessons
-            </h2>
-            <Link to="/student/schedules" style={{ fontSize: "13px", color: "#c084fc", textDecoration: "none" }}>View All →</Link>
+          <div className="section-header">
+            <div className="section-header-left">
+              <div className="section-header-icon">📅</div>
+              <h2 className="section-title">Next Upcoming Lessons</h2>
+            </div>
+            <Link to="/student/schedules" style={{ fontSize: "13px", color: "#c084fc", textDecoration: "none", fontWeight: 600, whiteSpace: "nowrap" }}>View All →</Link>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             {schedules.slice(0, 5).map((s, index) => (
-              <div key={s._id} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "12px", borderRadius: "10px", background: "rgba(255, 255, 255, 0.03)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
-                <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "linear-gradient(135deg, #a855f7, #ec4899)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "12px", fontWeight: "bold" }}>
+              <div key={s._id} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "12px 14px", borderRadius: "12px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                <div style={{ width: "30px", height: "30px", borderRadius: "50%", background: "linear-gradient(135deg, #a855f7, #ec4899)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "12px", fontWeight: "bold", flexShrink: 0 }}>
                   {index + 1}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <p style={{ margin: 0, fontSize: "14px", fontWeight: "600", color: "#e5e7eb" }}>
+                  <p style={{ margin: 0, fontSize: "13px", fontWeight: "600", color: "#e5e7eb", fontFamily: "'Outfit', sans-serif" }}>
                     {new Date(s.startTime).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}
                   </p>
                   <p style={{ margin: "2px 0 0 0", fontSize: "12px", color: "#9ca3af" }}>
@@ -164,48 +162,49 @@ const StudentOverview = () => {
               </div>
             ))}
             {schedules.length === 0 && (
-              <div style={{ textAlign: "center", padding: "24px", color: "#9ca3af" }}>
-                <div style={{ fontSize: "36px", marginBottom: "8px" }}>📭</div>
-                <p style={{ margin: 0 }}>No upcoming lessons scheduled</p>
-                <Link to="/student/enroll" style={{ display: "inline-block", marginTop: "12px", fontSize: "13px", color: "#c084fc" }}>
-                  Browse & Enroll in Available Classes →
+              <div style={{ textAlign: "center", padding: "32px 24px", color: "#9ca3af" }}>
+                <div style={{ fontSize: "40px", marginBottom: "10px" }}>📭</div>
+                <p style={{ margin: 0, fontSize: "14px" }}>No upcoming lessons scheduled</p>
+                <Link to="/student/enroll" style={{ display: "inline-block", marginTop: "12px", fontSize: "13px", color: "#c084fc", fontWeight: 600 }}>
+                  Browse &amp; Enroll in Available Classes →
                 </Link>
               </div>
             )}
           </div>
         </div>
 
-        {/* Recent Practice Logs Card */}
+        {/* Recent Practice Logs */}
         <div className="card">
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
-            <h2 style={{ fontSize: "18px", fontWeight: "bold", margin: 0, color: "#fff", display: "flex", alignItems: "center", gap: "8px" }}>
-              <span>🎼</span> Recent Practice Logs
-            </h2>
-            <Link to="/student/practice-logs" style={{ fontSize: "13px", color: "#c084fc", textDecoration: "none" }}>View All →</Link>
+          <div className="section-header">
+            <div className="section-header-left">
+              <div className="section-header-icon">🎼</div>
+              <h2 className="section-title">Recent Practice Logs</h2>
+            </div>
+            <Link to="/student/practice-logs" style={{ fontSize: "13px", color: "#c084fc", textDecoration: "none", fontWeight: 600, whiteSpace: "nowrap" }}>View All →</Link>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             {logs.slice(0, 4).map((log) => (
-              <div key={log._id} style={{ padding: "12px", borderRadius: "10px", background: "rgba(255, 255, 255, 0.03)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+              <div key={log._id} style={{ padding: "12px 14px", borderRadius: "12px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ fontSize: "13px", fontWeight: "600", color: "#c084fc" }}>
+                  <span style={{ fontSize: "13px", fontWeight: "700", color: "#c084fc", fontFamily: "'Outfit', sans-serif" }}>
                     {new Date(log.date).toLocaleDateString([], { dateStyle: "medium" })}
                   </span>
-                  <span style={{ fontSize: "12px", background: "rgba(168, 85, 247, 0.15)", color: "#e9d5ff", padding: "2px 8px", borderRadius: "6px" }}>
+                  <span style={{ fontSize: "12px", background: "rgba(168,85,247,0.15)", color: "#e9d5ff", padding: "3px 10px", borderRadius: "8px", fontWeight: 600 }}>
                     ⏱️ {log.durationMinutes} mins
                   </span>
                 </div>
                 {log.notes && (
-                  <p style={{ margin: "6px 0 0 0", fontSize: "13px", color: "#d1d5db", fontStyle: "italic" }}>
+                  <p style={{ margin: "6px 0 0 0", fontSize: "13px", color: "#d1d5db", fontStyle: "italic", lineHeight: 1.5 }}>
                     "{log.notes}"
                   </p>
                 )}
               </div>
             ))}
             {logs.length === 0 && (
-              <div style={{ textAlign: "center", padding: "24px", color: "#9ca3af" }}>
-                <div style={{ fontSize: "36px", marginBottom: "8px" }}>📝</div>
-                <p style={{ margin: 0 }}>No practice logs submitted yet</p>
-                <Link to="/student/practice-logs" style={{ display: "inline-block", marginTop: "12px", fontSize: "13px", color: "#c084fc" }}>
+              <div style={{ textAlign: "center", padding: "32px 24px", color: "#9ca3af" }}>
+                <div style={{ fontSize: "40px", marginBottom: "10px" }}>📝</div>
+                <p style={{ margin: 0, fontSize: "14px" }}>No practice logs submitted yet</p>
+                <Link to="/student/practice-logs" style={{ display: "inline-block", marginTop: "12px", fontSize: "13px", color: "#c084fc", fontWeight: 600 }}>
                   Add Your First Practice Log →
                 </Link>
               </div>
@@ -218,5 +217,3 @@ const StudentOverview = () => {
 };
 
 export default StudentOverview;
-
-
